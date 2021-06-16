@@ -15,8 +15,19 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-
+import { useDispatch } from 'react-redux'
+import withReducer from 'src/store/withReducer'
+import reducer from '../../../auth/store/reducers/index'
+import * as Action from '../../../auth/store/actions'
 const Login = () => {
+
+  const dispatch = useDispatch();
+
+  const userLogin = () => {
+    let data = { userName: 'aaaaaa', password: 'aaaaaa' };
+    dispatch(Action.submitLogin(data));
+  }
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
@@ -46,7 +57,7 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
-                        <CButton color="primary" className="px-4">Login</CButton>
+                        <CButton color="primary" className="px-4" onClick={userLogin} >Login</CButton>
                       </CCol>
                       <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
@@ -75,4 +86,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withReducer('login', reducer)(Login);
