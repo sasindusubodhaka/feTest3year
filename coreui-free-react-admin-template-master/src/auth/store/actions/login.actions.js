@@ -42,7 +42,7 @@ export function submitLogin(data) {
     Constants.LOGGED_IN_USER = user;
     console.log("path",user);
         history.push({
-            pathName: '/'
+            pathname: Constants.PAGES.adminDashboard 
         });
 
     return (dispatch, getState) => {
