@@ -121,7 +121,8 @@ lOvYsBlAAPPdnUuUsJrYuNFLW1n0TFNQhF0h916oUflK9BLDAKJ0k36Jem4uGvK4
     adminDashboard: '/dashboard',
     employeeAddEdit: '/employee/add-edit',
     employee: '/employee',
-    notFound:'/404'
+    notFound:'/404',
+    login:'/login'
   }
 
 };

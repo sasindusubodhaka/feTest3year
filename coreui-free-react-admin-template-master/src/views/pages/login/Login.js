@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import history from '../../../@history';
+import Constants from "../../../utils/Constants";
 import {
   CButton,
   CCard,
@@ -19,15 +21,29 @@ import { useDispatch } from 'react-redux'
 import withReducer from 'src/store/withReducer'
 import reducer from '../../../auth/store/reducers/index'
 import * as Action from '../../../auth/store/actions'
-const Login = () => {
+
+let initialFormValues={
+  email:'',
+  password:'',
+}
+const Login = (props) => {
+
+  const[formValues,setFormValue]=useState({...initialFormValues});
 
   const dispatch = useDispatch();
+  const userLogin = (e) => {
+    // let data = { userName: 'patient', password: 'aaaaaa' };
+    let data ={email:formValues.email, password: formValues.password}
+    e.preventDefault();
+    dispatch(Action.submitLogin(data));   
 
-  const userLogin = () => {
-    let data = { userName: 'aaaaaa', password: 'aaaaaa' };
-    dispatch(Action.submitLogin(data));
   }
+  const onMyChange=(v)=>{
+    let value=v.target.value;
+    let name=v.target.name;
+    setFormValue({...formValues,[name]:value})
 
+}
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
@@ -45,7 +61,14 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="text" placeholder="Username" autoComplete="username" />
+                      <CInput 
+                              type="text"
+                              placeholder="email" 
+                              autoComplete="email"
+                              name="email"
+                              value={formValues.email} 
+                              onChange={onMyChange}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -53,7 +76,14 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Password" autoComplete="current-password" />
+                      <CInput 
+                              type="password" 
+                              placeholder="Password" 
+                              autoComplete="current-password"
+                              name="password"
+                              value={formValues.password}
+                              onChange={onMyChange}
+                              />
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">

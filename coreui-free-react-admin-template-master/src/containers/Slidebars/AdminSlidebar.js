@@ -1,7 +1,6 @@
-import React,{useEffect}from 'react'
+import React,{useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import reducer from '../auth/store/reducers';
-import withReducer from '../store/withReducer';
+
 import {
   CCreateElement,
   CSidebar,
@@ -17,18 +16,12 @@ import {
 import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
-import navigation1 from './_nav';
-import navigation2 from './_DoctorNav';
+import navigation from '../NavItems/_AdminNav';
 
-const TheSidebar = () => {
+
+const AdminSlidebar = () => {
   const dispatch = useDispatch();
   const show = useSelector(state => state.sidebarShow);
-  const userType=useSelector(({user})=>user.userName);
- 
-useEffect(() => {
-  console.log("slide_bar",userType);
-
-}, [dispatch])
 
   return (
     <CSidebar
@@ -51,7 +44,7 @@ useEffect(() => {
 
 
         <CCreateElement
-          items={navigation1}
+          items={navigation}
           components={{
             CSidebarNavDivider,
             CSidebarNavDropdown,
@@ -65,5 +58,4 @@ useEffect(() => {
   )
 }
 
-// export default React.memo(TheSidebar)
-export default withReducer('user', reducer)(React.memo(TheSidebar));
+export default React.memo(AdminSlidebar)

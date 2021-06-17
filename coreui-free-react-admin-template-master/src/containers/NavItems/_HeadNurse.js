@@ -1,7 +1,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 
-const _nav =  [
+const _HeadNurse =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
@@ -15,6 +15,12 @@ const _nav =  [
   {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Colors',
+    to: '/theme/colors',
+    icon: 'cil-drop',
   },
   {
     _tag: 'CSidebarNavItem',
@@ -176,6 +182,34 @@ const _nav =  [
     ],
   },
   {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Notifications',
+    route: '/notifications',
+    icon: 'cil-bell',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Alerts',
+        to: '/notifications/alerts',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Badges',
+        to: '/notifications/badges',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Modal',
+        to: '/notifications/modals',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Toaster',
+        to: '/notifications/toaster'
+      }
+    ]
+  },
+  {
     _tag: 'CSidebarNavItem',
     name: 'Widgets',
     to: '/widgets',
@@ -220,7 +254,45 @@ const _nav =  [
       },
     ],
   },
-
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Disabled',
+    icon: 'cil-ban',
+    badge: {
+      color: 'secondary',
+      text: 'NEW',
+    },
+    addLinkClass: 'c-disabled',
+    'disabled': true
+  },
+  {
+    _tag: 'CSidebarNavDivider',
+    className: 'm-2'
+  },
+  {
+    _tag: 'CSidebarNavTitle',
+    _children: ['Labels']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Label danger',
+    to: '',
+    icon: {
+      name: 'cil-star',
+      className: 'text-danger'
+    },
+    label: true
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Label info',
+    to: '',
+    icon: {
+      name: 'cil-star',
+      className: 'text-info'
+    },
+    label: true
+  },
   {
     _tag: 'CSidebarNavItem',
     name: 'Label warning',
@@ -237,4 +309,4 @@ const _nav =  [
   }
 ]
 
-export default _nav
+export default _HeadNurse
